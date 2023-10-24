@@ -60,9 +60,18 @@ ul {
 
 .comment-card {
   padding: 0px;
-  width: 400px;
+  width: 300px;
 }
 
 .show-comments-button {
   margin-bottom: 20px;
+}
+.all-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-button {
+  margin-bottom: 10px;
 }
