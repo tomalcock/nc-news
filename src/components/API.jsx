@@ -23,3 +23,15 @@ export function getComments(article_id) {
     return data;
   })
 }
+
+export function patchVote(article_id,newVotes) {
+  
+  return axios
+  .patch(`https://nc-news-backend-project-ohqj.onrender.com/api/articles/${article_id}`, {
+    'inc_votes' : newVotes
+  })
+  .then(({ data }) => {
+    return data;
+  })
+
+}
