@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from 'react-router-dom';
 import * as API from './API';
+import * as utils from '../utils/utils';
 
 export default function IndividualArticle() {
 
@@ -25,7 +26,7 @@ export default function IndividualArticle() {
             <img className='article-image' src={currentArticle.article_img_url} alt="lives above the body and describes the article" />
             <p>{currentArticle.body}</p>
             <p>Number of comments: {currentArticle.comment_count}</p>
-            <Link to={`/articles/${article_id}/comments`}>View Comments</Link >
+            <p>Created: {utils.createdAt(currentArticle.created_at)}</p>
         </div>
     )
 }

@@ -57,3 +57,12 @@ ul {
   margin: auto;
   width: 70%;
 }
+
+.comment-card {
+  padding: 0px;
+  width: 400px;
+}
+
+.show-comments-button {
+  margin-bottom: 20px;
+}
