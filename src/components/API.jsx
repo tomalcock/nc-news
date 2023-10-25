@@ -33,5 +33,16 @@ export function patchVote(article_id,newVotes) {
   .then(({ data }) => {
     return data;
   })
+}
 
+export function postComment(article_id,inputComment,currentUser) {
+  return axios
+  .post(`https://nc-news-backend-project-ohqj.onrender.com/api/articles/${article_id}/comments`, {
+    username : currentUser,
+    body : inputComment
+  })
+  .then(({ data }) => {
+    console.log(data)
+    return data;
+  })
 }

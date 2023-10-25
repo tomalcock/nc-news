@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as API from './API';
 import * as utils from '../utils/utils';
+import PostComment from './PostComment';
+
 
 export default function Comments({article_id, seeCurrentComments, setSeeComments}) {
 
@@ -43,6 +45,8 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
                 <div className="all-comments"> 
 
                     <h2>All Comments</h2>
+                    
+                    <PostComment />
 
                     <ul>
                         {currentComments.map((comment) => {
