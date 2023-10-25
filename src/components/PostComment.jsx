@@ -11,6 +11,7 @@ export default function PostComment() {
     const [ inputComment, setInputComment ] = useState('')
     const [ commentSubmitted, setCommentSubmitted ] = useState(true)
     const [ commentBack, setCommentBack ] = useState(null)
+    const [ isLoading, setIsLoading ] = useState(true)
     const { article_id } = useParams();
     const { currentUser } = useContext(UserContext);
 
@@ -25,13 +26,15 @@ export default function PostComment() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsLoading(false)
         API.postComment(article_id, inputComment, currentUser)
         .then(({comment}) => {
+            setIsLoading(true)
             setCommentSubmitted(false);
             setCommentBack(comment);
         })
     }
-    console.log(commentBack)
+    
     return (
         <div className='post-comment'>
             {showNewComment && <button onClick={handleClick}>Post Comment</button>}
@@ -51,6 +54,7 @@ export default function PostComment() {
                 <button>Submit Comment</button>
             </form>
 }
+            {!isLoading && <p>Loading ...</p>}
             {!commentSubmitted && <p>Comment Submitted!</p>}
             {commentBack && 
             <li className="comment-card"> 
