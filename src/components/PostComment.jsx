@@ -53,7 +53,7 @@ export default function PostComment() {
                 />
                 <button>Submit Comment</button>
             </form>
-}
+            }
             {!isLoading && <p>Loading ...</p>}
             {!commentSubmitted && <p>Comment Submitted!</p>}
             {commentBack && 
@@ -64,6 +64,5 @@ export default function PostComment() {
                 <p>Votes: {commentBack.votes}</p>
             </li>}
         </div>
-    
     )
 }

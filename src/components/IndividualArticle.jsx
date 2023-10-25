@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as API from './API';
 import * as utils from '../utils/utils';
 import Voting from './Voting';

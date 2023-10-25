@@ -33,7 +33,6 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
         }
     }
 
-
     return (
         <div>
 
@@ -45,12 +44,12 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
                 <div className="all-comments"> 
 
                     <h2>All Comments</h2>
-                    
+
                     <PostComment />
 
                     <ul>
                         {currentComments.map((comment) => {
-                    return <li className="comment-card"key={comment.comment_id}>
+                    return <li className="comment-card" key={comment.comment_id}>
                             <p>{comment.body}</p>
                             <p>Author: {comment.author}</p>
                             <p>Created: {utils.createdAt(comment.created_at)}</p>
@@ -61,7 +60,6 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
 
                 </div>
             }
-
         </div>
     )
 }

@@ -46,3 +46,12 @@ export function postComment(article_id,inputComment,currentUser) {
     return data;
   })
 }
+
+export function getArticlesByTopic(topic) {
+  return axios
+  .get(`https://nc-news-backend-project-ohqj.onrender.com/api/articles?topic=${topic}`)
+  .then (({ data }) => {
+    return data;
+  })
+}
+
