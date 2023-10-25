@@ -55,3 +55,11 @@ export function getArticlesByTopic(topic) {
   })
 }
 
+export function getArticlesUsingQuery(sortBy,orderBy) {
+  return axios
+  .get(`https://nc-news-backend-project-ohqj.onrender.com/api/articles?sortby=${sortBy}&direction=${orderBy}`)
+  .then(({ data }) => {
+    console.log(data)
+  })
+}
+

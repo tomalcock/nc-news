@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import * as API from './API';
 import * as utils from '../utils/utils';
+import SortByBar from "./SortByBar";
 
 export default function SingleTopic() {
 
@@ -24,6 +25,7 @@ export default function SingleTopic() {
         ) : (
         <div className="all-articles">
             <h2>All Articles</h2>
+            <SortByBar path={`topics/${topic}`}/>
             <ul>
                 {articlesList.map((article) => {
                     return <li key={article.article_id}>
