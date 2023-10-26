@@ -7,11 +7,13 @@ import * as utils from '../utils/utils';
 
 
 export default function PostComment() {
-    const [ showNewComment, setNewComment ] = useState(true)
-    const [ inputComment, setInputComment ] = useState('')
-    const [ commentSubmitted, setCommentSubmitted ] = useState(true)
-    const [ commentBack, setCommentBack ] = useState(null)
-    const [ isLoading, setIsLoading ] = useState(true)
+    const [ showNewComment, setNewComment ] = useState(true);
+    const [ inputComment, setInputComment ] = useState('');
+    const [ commentSubmitted, setCommentSubmitted ] = useState(true);
+    const [ commentBack, setCommentBack ] = useState(null);
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [ disabled, setDisabled ] = useState(false);
+    const [ error, setError ] = useState(null);
     const { article_id } = useParams();
     const { currentUser } = useContext(UserContext);
 
@@ -25,14 +27,25 @@ export default function PostComment() {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setIsLoading(false)
-        API.postComment(article_id, inputComment, currentUser)
-        .then(({comment}) => {
+        if(disabled) {
+            return
+        }
+        else {
+            setDisabled(true)
+            e.preventDefault();
             setIsLoading(true)
+            API.postComment(article_id, inputComment, currentUser)
+            .then(({comment}) => {
+                console.log(comment)
+            setInputComment('')
+            setIsLoading(false)
             setCommentSubmitted(false);
             setCommentBack(comment);
         })
+        .catch((err) => {
+            setError(true);
+        })
+        }
     }
     
     return (
@@ -44,6 +57,7 @@ export default function PostComment() {
                 type="text"
                 id="comment-input"
                 aria-label="input-field"
+                disabled={disabled}
                 value={inputComment}
                 placeholder="Write comment here"
                 onChange={(event) => {
@@ -54,7 +68,8 @@ export default function PostComment() {
                 <button>Submit Comment</button>
             </form>
             }
-            {!isLoading && <p>Loading ...</p>}
+            {isLoading && !error && <p>Loading ...</p>}
+            {error && <p>Sorry, there was a problem connecting. Try refreshing the page</p>}
             {!commentSubmitted && <p>Comment Submitted!</p>}
             {commentBack && 
             <li className="comment-card"> 

@@ -3,14 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import * as API from './API';
 
 export default function SortByBar({path, articlesList, setArticlesList}) {
-    
-    // const { path } = props
 
     const [ sortByClicked, setSortByClicked ] = useState(false)
 
     const [ sortBy, setSortBy ] = useState('')
-
-    const [ orderBy, setOrderBy ] = useState('')
 
     const [ isLoading, setIsLoading ] = useState(false);
 
@@ -69,7 +65,6 @@ export default function SortByBar({path, articlesList, setArticlesList}) {
 
     const handleClickAsc = () => {
         setIsLoading(true)
-        setOrderBy('ascending');
         if(sortBy === 'created_at') {
             navigate(`/${path}?sort_by=created_at&direction=ascending`)
             API.getArticlesUsingQuery('created_at','ascending')
@@ -99,7 +94,6 @@ export default function SortByBar({path, articlesList, setArticlesList}) {
 
     const handleClickDesc = () => {
         setIsLoading(true)
-        setOrderBy('descending');
         if(sortBy === 'created_at') {
             navigate(`/${path}?sort_by=date&direction=descending`)
             API.getArticlesUsingQuery('created_at','descending')
@@ -139,7 +133,6 @@ export default function SortByBar({path, articlesList, setArticlesList}) {
             <button onClick={handleClickAsc}> ascending</button>
             <button onClick={handleClickDesc}> descending</button>
         </div>}
-
         {isLoading && <p>Loading ...</p>}
         </div>
     )

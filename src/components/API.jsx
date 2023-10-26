@@ -44,6 +44,10 @@ export function postComment(article_id,inputComment,currentUser) {
   .then(({ data }) => {
     return data;
   })
+  // .catch((err) => {
+  //   console.log(err)
+  //   return err;
+  // })
 }
 
 export function getArticlesByTopic(topic) {
