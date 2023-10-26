@@ -24,13 +24,15 @@ export default function AllArticlesPage() {
         ) : (
         <div className="all-articles">
             <h2>All Articles</h2>
-            <SortByBar path={'allarticles'}/>
+            <SortByBar path={'allarticles'} articlesList={articlesList} setArticlesList={setArticlesList}/>
             <ul>
                 {articlesList.map((article) => {
                     return <li key={article.article_id}>
                         <Link to={`/articles/${article.article_id}`}>{article.title}</Link >
                         <img className='article-image' src={article.article_img_url} alt="lives below the title of the article and describes the article" />
                         <h4>Topic: {article.topic}</h4>
+                        <p>Comment Count: {article.comment_count}</p>
+                        <p>Votes: {article.votes}</p>
                         <p>Created: {utils.createdAt(article.created_at)}</p>
                     </li>
                 })}

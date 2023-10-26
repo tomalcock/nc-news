@@ -113,3 +113,27 @@ nav{
 #sortby-bar-title {
  line-height:8px;
 }
+
+.date-true {
+  color: #646cff;
+}
+
+.date-false {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.votes-true {
+  color: #646cff;
+}
+
+.votes-false {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.comment-count-true {
+  color: #646cff;
+}
+
+.comment-count-false {
+  color: rgba(255, 255, 255, 0.87);
+}

@@ -25,7 +25,7 @@ export default function SingleTopic() {
         ) : (
         <div className="all-articles">
             <h2>All Articles</h2>
-            <SortByBar path={`topics/${topic}`}/>
+            <SortByBar path={`topics/${topic}`} articlesList={articlesList} setArticlesList={setArticlesList}/>
             <ul>
                 {articlesList.map((article) => {
                     return <li key={article.article_id}>
