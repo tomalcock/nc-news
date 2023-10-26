@@ -20,6 +20,10 @@
   }
 }
 
+.App {
+  width: 500px;
+}
+
 .card {
   padding: 2em;
 }
@@ -89,4 +93,47 @@ nav{
 
 .topic-name {
   padding-bottom: 20px;
+}
+
+#sortby-bar {
+  display: flex;
+  justify-content: space-around;
+  font-size:small;
+  margin-top: 10px;
+  height: 33.59px;
+}
+
+#orderby-bar {
+  display: flex;
+  justify-content: space-around;
+  font-size:small;
+  margin-top: 10px;
+}
+
+#sortby-bar-title {
+ line-height:8px;
+}
+
+.date-true {
+  color: #646cff;
+}
+
+.date-false {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.votes-true {
+  color: #646cff;
+}
+
+.votes-false {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.comment-count-true {
+  color: #646cff;
+}
+
+.comment-count-false {
+  color: rgba(255, 255, 255, 0.87);
 }

@@ -42,7 +42,6 @@ export function postComment(article_id,inputComment,currentUser) {
     body : inputComment
   })
   .then(({ data }) => {
-    console.log(data)
     return data;
   })
 }
@@ -51,6 +50,14 @@ export function getArticlesByTopic(topic) {
   return axios
   .get(`https://nc-news-backend-project-ohqj.onrender.com/api/articles?topic=${topic}`)
   .then (({ data }) => {
+    return data;
+  })
+}
+
+export function getArticlesUsingQuery(sortBy,orderBy) {
+  return axios
+  .get(`https://nc-news-backend-project-ohqj.onrender.com/api/articles?sort_by=${sortBy}&direction=${orderBy}`)
+  .then(({ data }) => {
     return data;
   })
 }
