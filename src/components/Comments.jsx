@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import * as API from './API';
 import * as utils from '../utils/utils';
 import PostComment from './PostComment';
-
+import DeleteComment from './DeleteComment';
+import { UserContext } from './contexts/UserContext';
 
 export default function Comments({article_id, seeCurrentComments, setSeeComments}) {
 
@@ -13,6 +14,14 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
     const [ buttonClicked, setButtonClicked ] = useState(true);
 
     const [ currentState, setState ] = useState('Show')
+
+    const { currentUser } = useContext(UserContext);
+
+    const [ deleteButtonClicked, setDeleteButtonClicked ] = useState(false);
+
+    const [ disabled, setDisabled ] = useState(false); // this is for the post button
+
+    const [ isAlertVisable, setIsAlertVisable ] = useState(false);
 
     const handleClick = () => {
         
@@ -45,7 +54,7 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
 
                     <h2>All Comments</h2>
 
-                    <PostComment />
+                    <PostComment deleteButtonClicked={deleteButtonClicked} setDeleteButtonClicked={setDeleteButtonClicked} currentComments={currentComments} setComments={setComments} setIsAlertVisable={setIsAlertVisable} isAlertVisable={isAlertVisable}/>
 
                     <ul>
                         {currentComments.map((comment) => {
@@ -54,10 +63,10 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
                             <p>Author: {comment.author}</p>
                             <p>Created: {utils.createdAt(comment.created_at)}</p>
                             <p>Votes: {comment.votes}</p>
+                            {comment.author === currentUser ? <DeleteComment deleteButtonClicked={deleteButtonClicked} setDeleteButtonClicked={setDeleteButtonClicked} comment_id={comment.comment_id} article_id={article_id} currentComments={currentComments} setComments={setComments} setDisabled={setDisabled} setIsAlertVisable={setIsAlertVisable}/> : null}
                             </li>
                         })}
                     </ul>
-
                 </div>
             }
         </div>

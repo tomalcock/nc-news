@@ -4,16 +4,19 @@ import { useParams } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from './contexts/UserContext';
 import * as utils from '../utils/utils';
+import DeleteComment from './DeleteComment';
 
 
-export default function PostComment() {
+export default function PostComment({deleteButtonClicked, setDeleteButtonClicked, currentComments, setComments, isAlertVisable, setIsAlertVisable}) {
+
     const [ showNewComment, setNewComment ] = useState(true);
     const [ inputComment, setInputComment ] = useState('');
-    const [ commentSubmitted, setCommentSubmitted ] = useState(true);
+    const [ commentSubmitted, setCommentSubmitted ] = useState(false);
     const [ commentBack, setCommentBack ] = useState(null);
     const [ isLoading, setIsLoading ] = useState(false);
     const [ disabled, setDisabled ] = useState(false);
     const [ error, setError ] = useState(null);
+    const [inputEmpty, setInputEmpty ] = useState(false)
     const { article_id } = useParams();
     const { currentUser } = useContext(UserContext);
 
@@ -27,19 +30,32 @@ export default function PostComment() {
     }
 
     const handleSubmit = (e) => {
-        if(disabled) {
+        console.log(inputComment.length)
+        if(inputComment.length === 0) {
+            setInputEmpty(true)
+            e.preventDefault();
+            setTimeout(() => {
+                setInputEmpty(false)
+            }, 3000)
+        }
+        else if(disabled) {
             return
         }
+        
         else {
+            setIsAlertVisable(true)
+
+            setTimeout(() => {
+                setIsAlertVisable(false)
+            }, 3000)
             setDisabled(true)
             e.preventDefault();
             setIsLoading(true)
             API.postComment(article_id, inputComment, currentUser)
             .then(({comment}) => {
-                console.log(comment)
             setInputComment('')
             setIsLoading(false)
-            setCommentSubmitted(false);
+            setCommentSubmitted(true);
             setCommentBack(comment);
         })
         .catch((err) => {
@@ -65,19 +81,26 @@ export default function PostComment() {
                     setInputComment(value)
                 }}
                 />
-                <button>Submit Comment</button>
+                <button onClick={()=> setDeleteButtonClicked(false)}>Submit Comment</button>
             </form>
             }
-            {isLoading && !error && <p>Loading ...</p>}
+            {inputEmpty && <p>Make sure to type a comment!</p>}
+            {isLoading && !error && !deleteButtonClicked && <p>Loading ...</p>}
             {error && <p>Sorry, there was a problem connecting. Try refreshing the page</p>}
-            {!commentSubmitted && <p>Comment Submitted!</p>}
-            {commentBack && 
+            {commentSubmitted && !deleteButtonClicked && isAlertVisable && <p>Comment Submitted!</p>}
+            {commentBack && !deleteButtonClicked &&
             <li className="comment-card"> 
                 <p>{commentBack.body}</p>
                 <p>Author: {commentBack.author}</p>
                 <p>Created: {utils.createdAt(commentBack.created_at)}</p>
                 <p>Votes: {commentBack.votes}</p>
+                <DeleteComment deleteButtonClicked={deleteButtonClicked} setDeleteButtonClicked={setDeleteButtonClicked} comment_id={commentBack.comment_id} article_id={article_id} currentComments={currentComments} setComments={setComments} setDisabled={setDisabled} setIsAlertVisable={setIsAlertVisable}/>
             </li>}
+            {deleteButtonClicked && !isLoading && isAlertVisable && <p>Comment deleted!</p>}
+            {deleteButtonClicked && null}
         </div>
     )
 }
+
+
+// Sort out not being able to post unless you've typed a body!!!!!!!

@@ -44,10 +44,6 @@ export function postComment(article_id,inputComment,currentUser) {
   .then(({ data }) => {
     return data;
   })
-  // .catch((err) => {
-  //   console.log(err)
-  //   return err;
-  // })
 }
 
 export function getArticlesByTopic(topic) {
@@ -63,6 +59,17 @@ export function getArticlesUsingQuery(sortBy,orderBy) {
   .get(`https://nc-news-backend-project-ohqj.onrender.com/api/articles?sort_by=${sortBy}&direction=${orderBy}`)
   .then(({ data }) => {
     return data;
+  })
+}
+
+export function deleteComment(comment_id) {
+  return axios
+  .delete(`https://nc-news-backend-project-ohqj.onrender.com/api/comments/${comment_id}`)
+  .then(() => {
+    return 'deleted';
+  })
+  .catch((err) => {
+    console.log(err)
   })
 }
 
