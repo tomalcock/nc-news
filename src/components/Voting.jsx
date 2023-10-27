@@ -16,18 +16,20 @@ export default function Voting({currentVotes, setVotes}) {
         setVotes(currentVotes => currentVotes + 1)
         setClickedVote(false)
         setVoteButton('Remove Vote')
-        API.patchVote(article_id,1)
-        .then(({updatedArticle}) => {
-            {console.log(updatedArticle.votes)}
-        })
+        if(!article_id) {
+            API.patchVote(1,1)
+        } else{
+            API.patchVote(article_id,1)
+        } 
     } else {
         setVotes(currentVotes => currentVotes - 1)
         setClickedVote(true)
         setVoteButton('Vote')
-        API.patchVote(article_id,-1)
-        .then(({updatedArticle}) => {
-            {console.log(updatedArticle.votes)}
-        })
+        if(!article_id) {
+            API.patchVote(1,-1)
+        } else {
+            API.patchVote(article_id,-1)
+        }  
     }
     }
 

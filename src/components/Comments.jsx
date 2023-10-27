@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import * as API from './API';
 import * as utils from '../utils/utils';
 import PostComment from './PostComment';
@@ -19,7 +19,7 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
 
     const [ deleteButtonClicked, setDeleteButtonClicked ] = useState(false);
 
-    const [ disabled, setDisabled ] = useState(false); // this is for the post button
+    const [ disabled, setDisabled ] = useState(false);
 
     const [ isAlertVisable, setIsAlertVisable ] = useState(false);
 
@@ -52,7 +52,7 @@ export default function Comments({article_id, seeCurrentComments, setSeeComments
             {currentState==='Hide' && seeCurrentComments && !isLoading &&
                 <div className="all-comments"> 
 
-                    <h2>All Comments</h2>
+                    <h2 id="all-comments-header">All Comments</h2>
 
                     <PostComment deleteButtonClicked={deleteButtonClicked} setDeleteButtonClicked={setDeleteButtonClicked} currentComments={currentComments} setComments={setComments} setIsAlertVisable={setIsAlertVisable} isAlertVisable={isAlertVisable}/>
 

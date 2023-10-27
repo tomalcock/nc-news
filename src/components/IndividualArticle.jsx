@@ -37,7 +37,7 @@ export default function IndividualArticle() {
         <p>Loading...</p>
         ) : (
         <div className="single-article" key={`individual article ${currentArticle.title}`}>
-            <h2>{currentArticle.title}</h2>
+            <h3>{currentArticle.title}</h3>
             <img className='article-image' src={currentArticle.article_img_url} alt="lives above the body and describes the article" />
             <p>{currentArticle.body}</p>
             <p>Number of comments: {currentArticle.comment_count}</p>

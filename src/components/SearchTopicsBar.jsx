@@ -13,7 +13,7 @@ export default function SearchTopicsBar() {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form id='topics-search'onSubmit={handleSubmit}>
             <input 
             type="text" 
             id="topic-input"

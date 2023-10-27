@@ -72,7 +72,7 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
         <div className='post-comment'>
             {showNewComment && <button onClick={handleClick}>Post Comment</button>}
             {!showNewComment && 
-            <form onSubmit={handleSubmit}>
+            <form id='comment-form'onSubmit={handleSubmit}>
                 <input 
                 type="text"
                 id="comment-input"
@@ -85,7 +85,7 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
                     setInputComment(value)
                 }}
                 />
-                <button onClick={()=> setDeleteButtonClicked(false)}>Submit Comment</button>
+                <button id='submit-comment-button'onClick={()=> setDeleteButtonClicked(false)}>Submit Comment</button>
             </form>
             }
             {inputEmpty && <p>Make sure to type a comment!</p>}
@@ -93,7 +93,7 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
             {error && <p>Sorry, there was a problem connecting. Try refreshing the page</p>}
             {commentSubmitted && !deleteButtonClicked && isAlertVisable && <p>Comment Submitted!</p>}
             {commentBack && !deleteButtonClicked &&
-            <li className="comment-card"> 
+            <li className="new-comment-card"> 
                 <p>{commentBack.body}</p>
                 <p>Author: {commentBack.author}</p>
                 <p>Created: {utils.createdAt(commentBack.created_at)}</p>
@@ -107,4 +107,3 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
 }
 
 
-// Sort out not being able to post unless you've typed a body!!!!!!!

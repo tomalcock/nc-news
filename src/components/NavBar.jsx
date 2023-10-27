@@ -14,15 +14,16 @@ export default function NavBar() {
     }
 
     return (
-        <nav>
+            <nav>
             <Link className='nav-a'to='/allarticles'>All Articles</Link>
             <Link className='nav-a'to='/alltopics'>Topics</Link>
             {!currentUser && <Link className='nav-a'to='/signin'>Sign In</Link>}
             {currentUser && <div className='account-nav'>
-                <Link className='nav-a'to={`/account/${currentUser}`}>Account</Link>
-                <button className='nav-a' onClick={handleClick}>Sign Out</button>
+            <Link className='nav-a'to={`/account/${currentUser}`}>Account</Link>
+            <button className='nav-a signout-button' onClick={handleClick}>Sign Out</button>
             </div>
             }
         </nav>
+        
     )
 }

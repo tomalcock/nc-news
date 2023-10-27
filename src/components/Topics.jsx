@@ -28,8 +28,8 @@ export default function Topics() {
             <ul>
                 {currentTopics.map((topic) => {
                     return (
-                    <Link key={topic} to={`/topics/${topic}`}>
-                    <li key={topic}>
+                    <Link  key={topic} to={`/topics/${topic}`}>
+                    <li className='topic-heading' key={topic}>
                         <p className='topic-name'>{topic}</p>
                     </li>
                     </Link>

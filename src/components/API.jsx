@@ -25,7 +25,7 @@ export function getComments(article_id) {
 }
 
 export function patchVote(article_id,newVotes) {
-  
+  console.log(article_id)
   return axios
   .patch(`https://nc-news-backend-project-ohqj.onrender.com/api/articles/${article_id}`, {
     'inc_votes' : newVotes
