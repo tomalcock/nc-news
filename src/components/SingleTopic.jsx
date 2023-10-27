@@ -10,16 +10,26 @@ export default function SingleTopic() {
 
     const [ isLoading, setIsLoading ] = useState(true);
 
+    const [ isError, setIsError ] = useState(null);
+
     const { topic } = useParams();
 
     useEffect(() => {
         API.getArticlesByTopic(topic).then(({ articles }) => {
             setArticlesList(articles);
             setIsLoading(false)
-        });
+        })
+        .catch(err => {
+            if(err.response.status === 404) {
+                setIsError(404)
+                console.log(isError)
+            }
+        })
         },[]
     );
 
+    {if(isError===404) {return <p>This topic does not exist</p>} }
+    
     return isLoading ? (
         <p>Loading...</p>
         ) : (

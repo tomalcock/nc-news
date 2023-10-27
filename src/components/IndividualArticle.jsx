@@ -18,17 +18,25 @@ export default function IndividualArticle() {
     const { article_id } = useParams();
 
     useEffect(() => {
-        API.getSingleArticle(article_id).then(({ article }) => {
-            setArticle(article);
-            setIsLoading(false);
-            setVotes(article.votes)  
-        });
+        if(article_id === undefined) {
+            API.getSingleArticle(1).then(({ article }) => {
+                setArticle(article);
+                setIsLoading(false);
+                setVotes(article.votes)  
+            });
+        } else{
+            API.getSingleArticle(article_id).then(({ article }) => {
+                setArticle(article);
+                setIsLoading(false);
+                setVotes(article.votes)  
+            });
+        }
         },[]);
 
     return isLoading ? (
         <p>Loading...</p>
         ) : (
-        <div key={`individual article ${currentArticle.title}`}>
+        <div className="single-article" key={`individual article ${currentArticle.title}`}>
             <h2>{currentArticle.title}</h2>
             <img className='article-image' src={currentArticle.article_img_url} alt="lives above the body and describes the article" />
             <p>{currentArticle.body}</p>

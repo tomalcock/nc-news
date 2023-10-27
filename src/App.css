@@ -21,7 +21,13 @@
 }
 
 .App {
-  width: 500px;
+  width: 550px;
+}
+
+@media screen and (max-width: 900px) {
+  .App {
+    width: 400px;
+  }
 }
 
 .card {
@@ -51,6 +57,19 @@ li {
   color: #020024;
 }
 
+.single-article {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px rgba(255, 255, 255, 0.876) solid;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.753);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  color: #020024;
+}
+
 ul {
   margin: 0px;
   padding: 0px;
@@ -59,7 +78,6 @@ ul {
 .all-articles {
   align-items: center;
   margin: auto;
-  width: 70%;
 }
 
 .comment-card {
@@ -89,6 +107,7 @@ ul {
 nav{
   display:flex;
   justify-content: space-around;
+  line-height: 55px;
 }
 
 .topic-name {
@@ -136,4 +155,18 @@ nav{
 
 .comment-count-false {
   color: rgba(255, 255, 255, 0.87);
+}
+
+#user-form {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  height:30px;
+  font-size:small;
+  line-height: 30px;
+}
+
+.account-nav {
+  display: flex;
+  justify-content: space-around;
 }

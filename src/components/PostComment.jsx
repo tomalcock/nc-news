@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as API from './API';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useContext } from "react";
 import { UserContext } from './contexts/UserContext';
 import * as utils from '../utils/utils';
@@ -16,9 +16,10 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
     const [ isLoading, setIsLoading ] = useState(false);
     const [ disabled, setDisabled ] = useState(false);
     const [ error, setError ] = useState(null);
-    const [inputEmpty, setInputEmpty ] = useState(false)
+    const [ inputEmpty, setInputEmpty ] = useState(false)
     const { article_id } = useParams();
     const { currentUser } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const handleClick = () => {
         if(showNewComment) {
@@ -30,7 +31,9 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
     }
 
     const handleSubmit = (e) => {
-        console.log(inputComment.length)
+        if(currentUser === null) {
+            navigate('/signin')
+        }
         if(inputComment.length === 0) {
             setInputEmpty(true)
             e.preventDefault();
@@ -59,6 +62,7 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
             setCommentBack(comment);
         })
         .catch((err) => {
+            console.log(err)
             setError(true);
         })
         }

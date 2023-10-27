@@ -36,6 +36,9 @@ export function patchVote(article_id,newVotes) {
 }
 
 export function postComment(article_id,inputComment,currentUser) {
+  console.log(article_id)
+  console.log(inputComment)
+  console.log(currentUser)
   return axios
   .post(`https://nc-news-backend-project-ohqj.onrender.com/api/articles/${article_id}/comments`, {
     username : currentUser,
@@ -70,6 +73,14 @@ export function deleteComment(comment_id) {
   })
   .catch((err) => {
     console.log(err)
+  })
+}
+
+export function getUser(username) {
+  return axios
+  .get(`https://nc-news-backend-project-ohqj.onrender.com/api/users/${username}`)
+  .then((response) => {
+    console.log(response)
   })
 }
 

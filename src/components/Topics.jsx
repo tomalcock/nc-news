@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as API from './API';
 import { Link } from 'react-router-dom';
+import SearchTopicsBar from './SearchTopicsBar'
 
 export default function Topics() {
 
@@ -22,6 +23,7 @@ export default function Topics() {
         <p>Loading...</p>
         ) : (
         <div className="topics-list">
+            <SearchTopicsBar />
             <h2>All Topics</h2>
             <ul>
                 {currentTopics.map((topic) => {
