@@ -1,8 +1,68 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #FAF9F6;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #748CAB;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #1D2D44
+}
+button:hover {
+  border: 2px solid red;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+a {
+  font-weight: 500;
+  color: #FAF9F6;
+  text-decoration: inherit;
+}
+a:hover {
+  color:#748CAB
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #1D2D44
 }
 
 @keyframes logo-spin {
@@ -34,10 +94,6 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
-}
-
 .article-image {
   width: 20%;
   height: 20%;
@@ -48,26 +104,26 @@ li {
   display:flex;
   flex-direction: column;
   align-items: center;
-  border: 2px rgba(255, 255, 255, 0.876) solid;
+  border: 2px #1D2D44 solid;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.753);
+  background-color: #1D2D44;
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 20px;
-  color: #020024;
+  color:  #FAF9F6;
 }
 
 .single-article {
   display:flex;
   flex-direction: column;
   align-items: center;
-  border: 2px rgba(255, 255, 255, 0.876) solid;
+  border: 2px #1D2D44 solid;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.753);
+  background-color: #1D2D44;
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 20px;
-  color: #020024;
+  color:  #FAF9F6;
 }
 
 ul {
@@ -87,6 +143,8 @@ ul {
 
 .show-comments-button {
   margin-bottom: 20px;
+  background-color: #748CAB;
+  color: #1D2D44;
 }
 .all-comments {
   display: flex;
@@ -96,18 +154,25 @@ ul {
 
 .vote-button {
   margin-bottom: 10px;
+  background-color: #748CAB;
+  color: #1D2D44;
 }
 
 .post-comment {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #1D2D44
 }
 
 nav{
   display:flex;
   justify-content: space-around;
   line-height: 55px;
+}
+
+.nav-a { 
+  color: #1D2D44
 }
 
 .topic-name {
@@ -138,7 +203,7 @@ nav{
 }
 
 .date-false {
-  color: rgba(255, 255, 255, 0.87);
+  color: #1D2D44
 }
 
 .votes-true {
@@ -146,7 +211,7 @@ nav{
 }
 
 .votes-false {
-  color: rgba(255, 255, 255, 0.87);
+  color: #1D2D44
 }
 
 .comment-count-true {
@@ -154,7 +219,7 @@ nav{
 }
 
 .comment-count-false {
-  color: rgba(255, 255, 255, 0.87);
+  color: #1D2D44
 }
 
 #user-form {
