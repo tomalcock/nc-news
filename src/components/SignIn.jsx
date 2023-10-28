@@ -33,7 +33,7 @@ export default function SignIn() {
     return (
         <div>
         <form id="user-form-with-button" onSubmit={handleSubmit}>
-            <div id="user-form">
+            <div id="username">
             <label htmlFor="username-field">Username</label>
             <input 
             type="text"
@@ -46,6 +46,8 @@ export default function SignIn() {
                 setInputUsername(value)
             }} 
             />
+            </div>
+            <div id="password">
             <label htmlFor="password-field">Password</label>
             <input 
             type="text"

@@ -100,7 +100,7 @@ h1 {
 
 @media screen and (max-width: 900px) {
   .App {
-    width: 400px;
+    width: 300px;
   }
 }
 
@@ -167,17 +167,8 @@ ul {
   background-color: #748CAB;
   color:#1D2D44;
   width: 300px;
-  /* margin-left:34px; */
 }
 
-/* .show-comments-button {
-  margin-bottom: 20px;
-  background-color: #748CAB;
-  color: #1D2D44;
-  height: 35px;
-  width: 160px;
-  font-size:smaller;
-} */
 .all-comments {
   display: flex;
   flex-direction: column;
@@ -271,16 +262,6 @@ nav::after {
   color: #1D2D44
 }
 
-#user-form {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  height:30px;
-  font-size:small;
-  line-height: 30px;
-}
-
 .account-nav {
   display: flex;
   justify-content: space-around;
@@ -353,4 +334,12 @@ input {
 .signout-button:hover {
   border: 1px solid #1D2D44;
   color: #1D2D44;
+}
+
+#username {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#password {
+  margin-bottom: 10px;
 }
