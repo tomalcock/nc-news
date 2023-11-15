@@ -47,7 +47,6 @@ export default function PostComment({deleteButtonClicked, setDeleteButtonClicked
         
         else {
             setIsAlertVisable(true)
-
             setTimeout(() => {
                 setIsAlertVisable(false)
             }, 3000)
