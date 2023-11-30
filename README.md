@@ -1,6 +1,6 @@
-<a name="readme-top"></a>
+<a id="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
+
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -110,9 +110,6 @@ Of course, no one template will serve all projects since your needs may be diffe
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-## Roadmap
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
